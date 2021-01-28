@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <a href="javascript:history.back()">Go Back</a>
+    <h1>{{ product.name }}</h1>
+    {{ dump(product)}}
+    <button id="addToOrder" data-product-id="{{ product.id }}">Add to order</button>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('shoppingCart') }}
+{% endblock %}
+

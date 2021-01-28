@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}View your order{% endblock %}
+
+{% block body %}
+<div class="example-wrapper">
+    <h1>Order {{ order.id }}</h1>
+    {{ dump(order)}}
+    <br>
+    <h1>Payment {{ payment.id }}</h1>
+    {{ dump(payment)}}
+    <br>
+    <a href="{{ path('products') }}">Products</a>
+</div>
+{% endblock %}

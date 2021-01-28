@@ -1,0 +1,57 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    router.request_context.scheme: 'https'
+    asset.request_context.secure: true
+    sendgrid_api.url: https://api.sendgrid.com/v3/
+    sendgrid_api.key: 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
+    eset_api.url: https://partner.eset.nl/api/
+    eset_api.GUID: Test_GUID
+    eset_api.KEY: Test_KEY
+    mollie_api.key: test_494abCt9vNNK5qbhq7s4P589euvyrp
+    mollie_api.url: https://api.mollie.com/v2/
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+    App\:
+        resource: '../src/'
+        exclude:
+            - '../src/DependencyInjection/'
+            - '../src/Entity/'
+            - '../src/Kernel.php'
+            - '../src/Tests/'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    App\Controller\:
+        resource: '../src/Controller/'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+    App\Service\Handlers\EmailHandler:
+        arguments: ['%sendgrid_api.url%', '%sendgrid_api.key%']
+
+    App\Service\EsetAPI\RequestHandler:
+        arguments: ['%eset_api.url%']
+
+    App\Service\EsetAPI\EsetClient:
+        arguments: ['%eset_api.GUID%', '%eset_api.KEY%']
+
+    App\Service\Mollie:
+        arguments: ['%mollie_api.url%', '%mollie_api.key%']
+
+    Mollie\Api\:
+        resource: "../vendor/mollie/api/src/*"
+        exclude: '../vendor/mollie/api/src/examples/*'
+        

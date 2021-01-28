@@ -1,0 +1,59 @@
+{
+  "resource": "payment",
+  "id": "tr_SkP7ktJsW9",
+  "mode": "test",
+  "amount": { "value": "10.00", "currency": "EUR" },
+  "settlementAmount": { "value": "10.00", "currency": "EUR" },
+  "amountRefunded": { "value": "0.00", "currency": "EUR" },
+  "amountRemaining": { "value": "10.00", "currency": "EUR" },
+  "description": "My first API payment",
+  "method": "ideal",
+  "status": "paid",
+  "createdAt": "2020-11-21T15:21:43+00:00",
+  "paidAt": "2020-11-21T15:21:48+00:00",
+  "canceledAt": null,
+  "expiresAt": null,
+  "failedAt": null,
+  "profileId": "pfl_qUkQSRyjGP",
+  "sequenceType": "oneoff",
+  "redirectUrl": "http://d48039d314fb.ngrok.io/orders/50",
+  "webhookUrl": "http://d48039d314fb.ngrok.io/payment/confirm/50",
+  "mandateId": null,
+  "subscriptionId": null,
+  "orderId": null,
+  "settlementId": null,
+  "locale": "en_NL",
+  "metadata": null,
+  "details": {
+    "consumerName": "T. TEST",
+    "consumerAccount": "NL63RABO0177117817",
+    "consumerBic": "ABNANL2A"
+  },
+  "restrictPaymentMethodsToCountry": null,
+  "_links": {
+    "self": {
+      "href": "https://api.mollie.com/v2/payments/tr_SkP7ktJsW9",
+      "type": "application/hal+json"
+    },
+    "dashboard": {
+      "href": "https://www.mollie.com/dashboard/org_10794157/payments/tr_SkP7ktJsW9",
+      "type": "text/html"
+    },
+    "changePaymentState": {
+      "href": "https://www.mollie.com/paymentscreen/testmode/?method=ideal&token=2.n7rf78",
+      "type": "text/html"
+    },
+    "documentation": {
+      "href": "https://docs.mollie.com/reference/v2/payments-api/get-payment",
+      "type": "text/html"
+    }
+  },
+  "_embedded": null,
+  "isCancelable": null,
+  "amountCaptured": null,
+  "applicationFeeAmount": null,
+  "authorizedAt": null,
+  "expiredAt": null,
+  "customerId": null,
+  "countryCode": "NL"
+}
